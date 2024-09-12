@@ -19,7 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include "global.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -91,46 +91,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int current_time = -1;
+  status = 0;
       while (1)
       {
         /* USER CODE END WHILE */
-    	  current_time++;
-    	  if (current_time < 5) {
-    	  	          // RED phase
-    	  	          HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, RESET); // RED ON
-    	  	          HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, SET); // YELLOW OFF
-    	  	          HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, SET); // GREEN OFF
-
-    	  	          HAL_GPIO_WritePin(LED_7_GPIO_Port, LED_7_Pin, RESET); // RED ON
-    	  	          HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, SET); // YELLOW OFF
-    	  	          HAL_GPIO_WritePin(LED_5_GPIO_Port, LED_5_Pin, SET); // GREEN OFF
-    	  	          //
-    	  	          HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, RESET); // RED ON
-    	  	          HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, SET); // YELLOW OFF
-    	  	          HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, SET); // GREEN OFF
-    	  	          HAL_Delay(1000);
-
-    	  	      } else if (current_time < 7) {
-    	  	          // YELLOW phase
-    	  	    	HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, SET); // RED OFF
-    	  	    	HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, RESET); // YELLOW ON
-    	  	    	HAL_GPIO_WritePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin, SET); // GREEN OFF
-    	  	    	HAL_Delay(1000);
-    	  	          // ... similar logic for YELLOW phase ...
-    	  	      } else if (current_time < 10) {
-    	  	    	HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, SET); // RED OFF
-    	  	    	HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, SET); // YELLOW OFF
-    	  	    	HAL_GPIO_WritePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin, RESET); // GREEN ON
-    	  	    	HAL_Delay(1000);
-    	  	          // GREEN phase
-    	  	          // ... similar logic for GREEN phase ...
-    	  	      } else {
-    	  	          // Reset timer and start a new cycle
-    	  	          current_time = -1;
-    	  	      }
-
-
+    	  run();
         /* USER CODE BEGIN 3 */
       }
 }
