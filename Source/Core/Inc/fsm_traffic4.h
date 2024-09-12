@@ -10,5 +10,6 @@
 #include "global.h"
 
 void run();
+void display7SEG(int num);
 
 #endif /* INC_FSM_TRAFFIC4_H_ */
