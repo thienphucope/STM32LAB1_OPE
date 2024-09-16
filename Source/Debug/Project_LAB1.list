@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00003040  00000000  00000000  00020035  2**0
+ 12 .debug_info   00003268  00000000  00000000  00020035  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00000e9f  00000000  00000000  00023075  2**0
+ 13 .debug_abbrev 00000f88  00000000  00000000  0002329d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000003e8  00000000  00000000  00023f18  2**3
+ 14 .debug_aranges 00000400  00000000  00000000  00024228  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000360  00000000  00000000  00024300  2**3
+ 15 .debug_ranges 00000368  00000000  00000000  00024628  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  000155cc  00000000  00000000  00024660  2**0
+ 16 .debug_macro  00015771  00000000  00000000  00024990  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00005285  00000000  00000000  00039c2c  2**0
+ 17 .debug_line   00005a3e  00000000  00000000  0003a101  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00079a53  00000000  00000000  0003eeb1  2**0
+ 18 .debug_str    00079a77  00000000  00000000  0003fb3f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000b8904  2**0
+ 19 .comment      00000053  00000000  00000000  000b95b6  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000d94  00000000  00000000  000b8958  2**2
+ 20 .debug_frame  00000da4  00000000  00000000  000b960c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -77,10 +77,10 @@ Disassembly of section .text:
  8000148:	0800137c 	.word	0x0800137c
 
 0800014c <clearAllClock>:
-/* USER CODE END PFP */
-
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
+ *      Author: HPVictus
+ */
+#include "global.h"
+#include "main.h"
 void clearAllClock()
 {
  800014c:	b580      	push	{r7, lr}
@@ -330,16 +330,12 @@ int main(void)
   int hour = 0;
  80002de:	2300      	movs	r3, #0
  80002e0:	607b      	str	r3, [r7, #4]
+      while (1)
+      {
     	  /* USER CODE END WHILE */
-
-
-
-    	      	  // Reset tất cả LED
-    	      	     clearAllClock();
+    	   clearAllClock();
  80002e2:	f7ff ff33 	bl	800014c <clearAllClock>
-
-    	      	          // Hiển thị kim giây
-    	      	          setNumberOnClock(second % 12);
+    	   setNumberOnClock(second % 12);
  80002e6:	68fa      	ldr	r2, [r7, #12]
  80002e8:	4b23      	ldr	r3, [pc, #140]	; (8000378 <main+0xb4>)
  80002ea:	fb83 1302 	smull	r1, r3, r3, r2
@@ -353,9 +349,7 @@ int main(void)
  80002fc:	1ad1      	subs	r1, r2, r3
  80002fe:	4608      	mov	r0, r1
  8000300:	f7ff ff6a 	bl	80001d8 <setNumberOnClock>
-
-    	      	          // Hiển thị kim phút
-    	      	          setNumberOnClock(minute % 12);
+    	   setNumberOnClock(minute % 12);
  8000304:	68ba      	ldr	r2, [r7, #8]
  8000306:	4b1c      	ldr	r3, [pc, #112]	; (8000378 <main+0xb4>)
  8000308:	fb83 1302 	smull	r1, r3, r3, r2
@@ -369,9 +363,7 @@ int main(void)
  800031a:	1ad1      	subs	r1, r2, r3
  800031c:	4608      	mov	r0, r1
  800031e:	f7ff ff5b 	bl	80001d8 <setNumberOnClock>
-
-    	      	          // Hiển thị kim giờ
-    	      	          setNumberOnClock(hour % 12);
+    	   setNumberOnClock(hour % 12);
  8000322:	687a      	ldr	r2, [r7, #4]
  8000324:	4b14      	ldr	r3, [pc, #80]	; (8000378 <main+0xb4>)
  8000326:	fb83 1302 	smull	r1, r3, r3, r2
@@ -385,48 +377,47 @@ int main(void)
  8000338:	1ad1      	subs	r1, r2, r3
  800033a:	4608      	mov	r0, r1
  800033c:	f7ff ff4c 	bl	80001d8 <setNumberOnClock>
-    	      	          // Cập nhật giây
-    	      	          second++;
+    	   second++;
  8000340:	68fb      	ldr	r3, [r7, #12]
  8000342:	3301      	adds	r3, #1
  8000344:	60fb      	str	r3, [r7, #12]
-    	      	          if (second >= 60)
+    	      	 if (second >= 60)
  8000346:	68fb      	ldr	r3, [r7, #12]
  8000348:	2b3b      	cmp	r3, #59	; 0x3b
  800034a:	dd11      	ble.n	8000370 <main+0xac>
-    	      	          {
-    	      	              second = 0;
+    	      	     {
+    	      	     second = 0;
  800034c:	2300      	movs	r3, #0
  800034e:	60fb      	str	r3, [r7, #12]
-    	      	              minute++; // Tăng phút sau mỗi 60 giây
+    	      	     minute++; // Tăng phút sau mỗi 60 giây
  8000350:	68bb      	ldr	r3, [r7, #8]
  8000352:	3301      	adds	r3, #1
  8000354:	60bb      	str	r3, [r7, #8]
-    	      	              if (minute >= 60)
+    	      	     if (minute >= 60)
  8000356:	68bb      	ldr	r3, [r7, #8]
  8000358:	2b3b      	cmp	r3, #59	; 0x3b
  800035a:	dd09      	ble.n	8000370 <main+0xac>
-    	      	              {
-    	      	                  minute = 0;
+    	      	     	 {
+    	      	     	 minute = 0;
  800035c:	2300      	movs	r3, #0
  800035e:	60bb      	str	r3, [r7, #8]
-    	      	                  hour++; // Tăng giờ sau mỗi 60 phút
+    	      	         hour++; // Tăng giờ sau mỗi 60 phút
  8000360:	687b      	ldr	r3, [r7, #4]
  8000362:	3301      	adds	r3, #1
  8000364:	607b      	str	r3, [r7, #4]
-    	      	                  if (hour >= 12)
+    	      	         if (hour >= 12)
  8000366:	687b      	ldr	r3, [r7, #4]
  8000368:	2b0b      	cmp	r3, #11
  800036a:	dd01      	ble.n	8000370 <main+0xac>
-    	      	                      hour = 0; // Reset lại sau 12 giờ
+    	      	         hour = 0; // Reset lại sau 12 giờ
  800036c:	2300      	movs	r3, #0
  800036e:	607b      	str	r3, [r7, #4]
-    	      	              }
-    	      	          }
-    	      	          HAL_Delay(20);
- 8000370:	2014      	movs	r0, #20
+    	      	     	 }
+    	      	     }
+    	   HAL_Delay(100);
+ 8000370:	2064      	movs	r0, #100	; 0x64
  8000372:	f000 f961 	bl	8000638 <HAL_Delay>
-    	      	     clearAllClock();
+    	   clearAllClock();
  8000376:	e7b4      	b.n	80002e2 <main+0x1e>
  8000378:	2aaaaaab 	.word	0x2aaaaaab
 

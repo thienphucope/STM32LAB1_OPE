@@ -1,0 +1,3 @@
+global.c:9:6:clearAllClock	8	static
+global.c:25:6:setNumberOnClock	16	static
+global.c:70:6:clearNumberOnClock	16	static
