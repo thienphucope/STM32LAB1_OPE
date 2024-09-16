@@ -105,6 +105,7 @@ int main(void)
 	  	  {
 	  	  HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, SET);
 	  	  HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, RESET);
+	  	  status = 0;
 	  	  }
 	  	  HAL_Delay(2000);
     /* USER CODE BEGIN 3 */
