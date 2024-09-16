@@ -130,7 +130,7 @@ void run(){
 		display7SEG(counter);
 		counter--;
 		if (counter <= 2) status = 1;
-		HAL_Delay(1000);
+
 		break;
 	case 1:
 		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, SET);
@@ -153,7 +153,7 @@ void run(){
 		display7SEG(counter);
 		counter--;
 		if (counter <0) {status = 2;counter = 2;}
-		HAL_Delay(1000);
+
 		break;
 	case 2:
 		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, RESET);
@@ -176,7 +176,7 @@ void run(){
 		display7SEG(counter);
 		counter--;
 		if (counter <0) {status = 3;counter = 1;}
-		HAL_Delay(1000);
+
 		break;
 	case 3:
 		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, RESET);
@@ -199,7 +199,7 @@ void run(){
 		display7SEG(counter);
 		counter--;
 		if (counter <0) {status = 0;counter = 4;}
-		HAL_Delay(1000);
+
 		break;
 	default:
 		break;
