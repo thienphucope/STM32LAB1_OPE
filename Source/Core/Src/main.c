@@ -92,10 +92,12 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   status = 0;
+  counter = 2;
       while (1)
       {
         /* USER CODE END WHILE */
     	  run();
+    	  HAL_Delay(1000);
         /* USER CODE BEGIN 3 */
       }
 }

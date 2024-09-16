@@ -10,5 +10,6 @@
 #include "main.h"
 
 extern int status;
+extern int counter;
 
 #endif /* INC_GLOBAL_H_ */

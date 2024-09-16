@@ -26,9 +26,8 @@ void run(){
 		HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, RESET);
 		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, RESET);
 		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, SET);
-
-		status = 1;
-		HAL_Delay(3000);
+		if (counter <= 0) { counter = 1; status = 1;}
+		else counter--;
 		break;
 	case 1:
 		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, SET);
@@ -47,8 +46,8 @@ void run(){
 		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, SET);
 		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, RESET);
 
-		status = 2;
-		HAL_Delay(2000);
+		if (counter <= 0) { counter = 2; status = 2;}
+		else counter--;
 		break;
 	case 2:
 		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, RESET);
@@ -67,8 +66,8 @@ void run(){
 		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, RESET);
 		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, RESET);
 
-		status = 3;
-		HAL_Delay(3000);
+		if (counter <= 0) { counter = 1; status = 3;}
+		else counter--;
 		break;
 	case 3:
 		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, RESET);
@@ -87,8 +86,8 @@ void run(){
 		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, RESET);
 		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, RESET);
 
-		status = 0;
-		HAL_Delay(2000);
+		if (counter <= 0) { counter = 2; status = 0;}
+		else counter--;
 		break;
 	default:
 		break;
