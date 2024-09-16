@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00003002  00000000  00000000  00020035  2**0
+ 12 .debug_info   0000320e  00000000  00000000  00020035  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00000e7f  00000000  00000000  00023037  2**0
+ 13 .debug_abbrev 00000f77  00000000  00000000  00023243  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000003d8  00000000  00000000  00023eb8  2**3
+ 14 .debug_aranges 000003f0  00000000  00000000  000241c0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000350  00000000  00000000  00024290  2**3
+ 15 .debug_ranges 00000358  00000000  00000000  000245b0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00015590  00000000  00000000  000245e0  2**0
+ 16 .debug_macro  00015739  00000000  00000000  00024908  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000524b  00000000  00000000  00039b70  2**0
+ 17 .debug_line   00005a03  00000000  00000000  0003a041  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00079947  00000000  00000000  0003edbb  2**0
+ 18 .debug_str    00079967  00000000  00000000  0003fa44  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000b8702  2**0
+ 19 .comment      00000053  00000000  00000000  000b93ab  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000d58  00000000  00000000  000b8758  2**2
+ 20 .debug_frame  00000d68  00000000  00000000  000b9400  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -77,10 +77,10 @@ Disassembly of section .text:
  8000148:	08001518 	.word	0x08001518
 
 0800014c <display7SEG>:
-/* USER CODE END PFP */
 
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
+
+#include "led7.h"
+
 void display7SEG(int num)
 {
  800014c:	b580      	push	{r7, lr}
