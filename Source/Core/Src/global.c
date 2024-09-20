@@ -6,6 +6,14 @@
  */
 #include "global.h"
 #include "main.h"
+
+  int second = 0;
+  int minute = 0;
+  int hour = 0;
+  int prevSecond = -1;
+  int prevMinute = -1;
+  int prevHour = -1;
+
 void clearAllClock()
 {
 	HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
@@ -110,4 +118,38 @@ void clearNumberOnClock(int num)
 		default:
 			break;
 	}
+}
+
+void run(){
+	if (prevSecond != second % 12) {
+	          clearNumberOnClock(prevSecond % 12); // Clear previous second
+	      }
+	      if (prevMinute != minute % 12) {
+	          clearNumberOnClock(prevMinute % 12); // Clear previous minute
+	      }
+	      if (prevHour != hour % 12) {
+	          clearNumberOnClock(prevHour % 12); // Clear previous hour
+	      }
+
+	      setNumberOnClock(second % 12);
+	      setNumberOnClock(minute % 12);
+	      setNumberOnClock(hour % 12);
+
+	      prevSecond = second;
+	      prevMinute = minute;
+	      prevHour = hour;
+
+	      second++;
+	      if (second >= 60)
+	      {
+	          second = 0;
+	          minute++; // Tăng phút sau mỗi 60 giây
+	          if (minute >= 60)
+	          {
+	              minute = 0;
+	              hour++; // Tăng giờ sau mỗi 60 phút
+	              if (hour >= 12)
+	                  hour = 0; // Reset lại sau 12 giờ
+	          }
+	      }
 }
