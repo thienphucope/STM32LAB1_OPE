@@ -92,6 +92,9 @@ void clearNumberOnClock(int num)
 		case 6:
 			HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, GPIO_PIN_RESET);
 			break;
+		case 7:
+			HAL_GPIO_WritePin(LED_7_GPIO_Port, LED_7_Pin, GPIO_PIN_RESET);
+			break;
 		case 8:
 			HAL_GPIO_WritePin(LED_8_GPIO_Port, LED_8_Pin, GPIO_PIN_RESET);
 			break;
