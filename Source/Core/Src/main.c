@@ -55,7 +55,7 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-/*void clearAllClock()
+void clearAllClock()
 {
 	HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
@@ -115,7 +115,7 @@ void setNumberOnClock(int num)
 			break;
 	}
 }
-*/
+
 void clearNumberOnClock(int num)
 {
 	switch(num)
@@ -212,18 +212,7 @@ int main(void)
     	  HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, GPIO_PIN_SET);HAL_Delay(500);
     	  HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, GPIO_PIN_SET);HAL_Delay(500);
 
-    	  clearNumberOnClock(1); HAL_Delay(500);
-    	  clearNumberOnClock(2); HAL_Delay(500);
-    	  clearNumberOnClock(3); HAL_Delay(500);
-    	  clearNumberOnClock(4); HAL_Delay(500);
-    	  clearNumberOnClock(5); HAL_Delay(500);
-    	  clearNumberOnClock(6); HAL_Delay(500);
-    	  clearNumberOnClock(7); HAL_Delay(500);
-    	  clearNumberOnClock(8); HAL_Delay(500);
-    	  clearNumberOnClock(9); HAL_Delay(500);
-    	  clearNumberOnClock(10); HAL_Delay(500);
-    	  clearNumberOnClock(11); HAL_Delay(500);
-    	  clearNumberOnClock(0); HAL_Delay(500);
+    	  clearAllClock(); HAL_Delay(500);
 
       }
 }
